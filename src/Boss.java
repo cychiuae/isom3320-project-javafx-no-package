@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 import javafx.scene.canvas.GraphicsContext;
@@ -7,21 +6,43 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 
+/**
+ * Class Boss is for managing behavior of the boss. Boss is a children 
+ * class inherited from abstract class Enemy. This class specified
+ * boss's own action and place of existence. 
+ * @author kevingok
+ *
+ */
 public class Boss extends Enemy {
+	 /**Define the walking action of the boss as 0.*/
 	private static final int WALKING = 0;
+	/**Define the firing action of the boss as 1.*/
 	private static final int FIRING = 1;
+	/**Define the jumping action of the boss as 2.*/
 	private static final int JUMPING = 2;
+	/**Define the bomb sound of firing.*/
 	private static Media BOMBSOUND = MultimediaHelper.getMusicByName("bomb.wav");
 
+	/**Declares an ArrayList to store the fire bombs.*/
 	private ArrayList<FireBomb> balls;
+	/**Declares a variable for whether the boss is firing.*/
 	private boolean firing;
 
+	/**Declares a variable for whether the boss is jumping.*/
 	private boolean jumping;
 
+	/**Declares an ArrayList to store the images of sprites.*/
 	private ArrayList<ArrayList<Image>> sprites;
 	
+	/**Declares the font for the health bar of the boss.*/
 	private Font font;
 
+	/**
+	 * Class constructor to initiate boss's basic information, e.g.
+	 * collision area, health power(HP), damage power, image, default
+	 * action, etc.
+	 * @param map		Map of the stage
+	 */
 	public Boss(Map map) {
 		super(map);
 		// TODO Auto-generated constructor stub
@@ -60,6 +81,9 @@ public class Boss extends Enemy {
 		animation.setDelay(400);
 	}
 
+	 /**Check whether the player is hit by attack of the boss.
+	 * @param p  player
+	 * */
 	public void checkHit(Player p) {
 		for(int i = 0; i < balls.size(); i++) {
 			Bullet fb = balls.get(i);
@@ -71,6 +95,7 @@ public class Boss extends Enemy {
 		}
 	}
 	
+	/**Update the movement of the boss.*/
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
@@ -162,16 +187,19 @@ public class Boss extends Enemy {
 		animation.update();
 	}
 
+	 /**Trigger the attack(firing) of the boss.*/
 	@Override
 	public void startFiring() {
 		firing = true;
 	}
 	
+	/**Trigger the jumping of the boss.*/
 	@Override
 	public void startJumping() {
 		jumping = true;
 	}
 	
+	/**Trigger the creation of a fireball object and set the position of it.*/
 	private void fireBall() {
 		FireBomb fb = new FireBomb(map, facingRight);
 		if(facingRight) {
@@ -183,6 +211,7 @@ public class Boss extends Enemy {
 		balls.add(fb);
 	}
 	
+	/** Update the action of the boss with correct animation.*/
 	private void updateAction() {
 		if(firing) {
 			if(currentAction != FIRING) {
@@ -230,6 +259,10 @@ public class Boss extends Enemy {
 		}
 	}
 	
+	 /** 
+	   * Trigger the drawing of the boss.
+	   * @param gc  graphics of the boss
+	   * */
 	private void drawBody(GraphicsContext gc) {
 		if(isHit) {
 			if((System.nanoTime() - hitTimer) / 100000000 % 2 == 0) {
@@ -244,6 +277,9 @@ public class Boss extends Enemy {
 		}	
 	}
 
+	 /** Trigger the drawing of the boss's health bar.
+	   * @param gc  graphics of the boss
+	   * */
 	@Override
 	public void render(GraphicsContext gc) {
 		// TODO Auto-generated method stub	
