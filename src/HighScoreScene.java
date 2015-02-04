@@ -10,16 +10,16 @@ import javafx.scene.text.FontWeight;
  *
  */
 public class HighScoreScene extends Scene {
-	/**Declare background instance*/
+	/**Declare background instance.*/
 	private Background background;
-	/**Declare Font color of the title*/
+	/**Declare Font color of the title.*/
 	private Color titleColor;
-	/**Declare Font of the title*/
+	/**Declare Font of the title.*/
 	private Font titleFont;
-	/**Declare Font of other wordings*/
+	/**Declare Font of other wordings.*/
 	private Font font;
 	
-	/**Define scores array for showing highest three score on the list*/
+	/**Define scores array for showing highest three score on the list.*/
 	private Score[] scores;
 
 	/**
@@ -37,7 +37,7 @@ public class HighScoreScene extends Scene {
 	}
 	
 	/**
-	 * Initiate score board that is retrieved from score history file 
+	 * Initiate score board that is retrieved from score history file .
 	 */
 	@Override
 	public void init() {
@@ -46,7 +46,7 @@ public class HighScoreScene extends Scene {
 	}
 
 	/**
-	 * Update background
+	 * Update background.
 	 */
 	@Override
 	public void update() {
@@ -55,7 +55,7 @@ public class HighScoreScene extends Scene {
 	}
 
 	/**
-	 * Draw the background image and wordings that will needed on scene
+	 * Draw the background image and wordings that will needed on scene.
 	 */
 	@Override
 	public void render(GraphicsContext gc) {
@@ -76,7 +76,7 @@ public class HighScoreScene extends Scene {
 	}
 
 	/**
-	 * Handle keyboard pressed event
+	 * Handle keyboard pressed event.
 	 */
 	@Override
 	public void keyPressed(KeyCode keyCode) {
@@ -88,7 +88,7 @@ public class HighScoreScene extends Scene {
 	}
 	
 	/**
-	 * Handle keyboard released event
+	 * Handle keyboard released event.
 	 */
 	@Override
 	public void keyReleased(KeyCode keyCode) {
