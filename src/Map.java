@@ -18,9 +18,9 @@ public class Map {
 	/**Defines minimum and maximum of x.*/
 	private double xMin, xMax;
 	
-	/**Defines 2D array storing row and column of ..*/
+	/**Defines 2D array storing row and column of map indices.*/
 	private int[][] map;
-	/**Defines tiles array for .*/
+	/**Defines tiles array for storing tile image.*/
 	private Tile[] tiles;
 	/**Defines size of tile.*/
 	private double tileSize;
@@ -87,7 +87,8 @@ public class Map {
 	
 	/**
 	 * Load the map image file from Resource folder. Method will define whether 
-	 * each tile is a block or able to be passed through*/
+	 * each tile is a block or able to be passed through
+	 * */
 	public void loadTiles() {
 		Image tileSet = MultimediaHelper.getImageByName("grasstileset.gif");
 		int numOfCol = (int) (tileSet.getWidth() / tileSize);
@@ -103,8 +104,8 @@ public class Map {
 	}
 	
 	/**
-	 * Set position of x.
-	 * @param x			Sets position*/
+	 * Set position of x for moving map onwards.
+	 * @param x			Sets position of map image*/
 	public void setPosition(double x) {
 		xPosition = x;
 		
@@ -119,8 +120,8 @@ public class Map {
 	}
 	
 	/**
-	 * Get position of x.
-	 * @return 			Position of x
+	 * Get position of current position of map.
+	 * @return 			Position of map
 	 */
 	public double getX() {
 		return xPosition;
