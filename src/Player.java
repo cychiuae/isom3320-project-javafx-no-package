@@ -425,7 +425,9 @@ public class Player extends Character {
 			firing = true;
 		}
 		if(keyCode == KeyCode.D) {
-			attack = true;
+			if(dy == 0) {
+				attack = true;
+			}
 		}
 	}
 
