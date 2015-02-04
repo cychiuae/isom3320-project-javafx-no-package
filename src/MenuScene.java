@@ -14,18 +14,18 @@ import javafx.scene.text.FontWeight;
  */
 public class MenuScene extends Scene {
 	
-	/**Declare title name*/
+	/**Declare title name.*/
 	private final String title;
-	/**Declare title font type*/
+	/**Declare title font type.*/
 	private Font titleFont;
-	/**Declare title font color*/
+	/**Declare title font color.*/
 	private Color titleColor;
-	/**Declare font type of other normal wordings */
+	/**Declare font type of other normal wordings.*/
 	private Font normalFont;
 	
-	/**Declare all options*/
+	/**Declare all options.*/
 	private String[] options;
-	/**Declare current option chosen*/
+	/**Declare current option chosen.*/
 	private int currentOption;
 	
 	/**
@@ -50,14 +50,14 @@ public class MenuScene extends Scene {
 		};
 	}
 	
-	/**??*/
+	/**No intentional use.*/
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	/**Update background*/
+	/**Update background.*/
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
@@ -65,7 +65,7 @@ public class MenuScene extends Scene {
 	}
 
 	/**
-	 * Draw out the layout of menu scene
+	 * Draw out the layout of menu scene.
 	 */
 	@Override
 	public void render(GraphicsContext gc) {
@@ -95,7 +95,7 @@ public class MenuScene extends Scene {
 	}
 
 	/**
-	 * Handle keyboard pressed event
+	 * Handle keyboard pressed event.
 	 */
 	@Override
 	public void keyPressed(KeyCode keyCode) {
@@ -129,7 +129,7 @@ public class MenuScene extends Scene {
 	}
 
 	/**
-	 * Handle keyboard released event
+	 * Handle keyboard released event.
 	 */
 	@Override
 	public void keyReleased(KeyCode keyCode) {
