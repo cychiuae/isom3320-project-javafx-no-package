@@ -1,5 +1,3 @@
-
-
 /**
  * Class Score manage score of the player in every game play.
  * @author kevingok

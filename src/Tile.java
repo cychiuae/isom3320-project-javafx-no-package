@@ -1,7 +1,5 @@
-
-
-
 import javafx.scene.image.Image;
+
 /**
  * Class Tile is for defining tile object property.
  * @author kevingok
