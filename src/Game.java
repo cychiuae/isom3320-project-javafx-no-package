@@ -120,6 +120,7 @@ public class Game extends Application implements EventHandler<KeyEvent>{
 	/**
 	 * The main method is only needed for the IDE with limited
 	 * JavaFX support. Not needed for running from the command line.
+	 * @param args		No intentional use
 	 */
 	public static void main(String[] args) {
 		launch(args);

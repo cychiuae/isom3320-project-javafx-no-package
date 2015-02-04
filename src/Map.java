@@ -53,7 +53,7 @@ public class Map {
 	 * Load the map index file from Resource folder and store total number of
 	 * column and row of indices into 2D array.
 	 * @param mapName			Sets filename of map
-	 * @throws Exception 		If input exception occurred*/
+	 * */
 	public void loadMap(String mapName) {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(mapName));

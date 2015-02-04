@@ -8,21 +8,30 @@ import javafx.scene.input.KeyCode;
  */
 public abstract class Scene {
 	
-	/**Declare background instance*/
+	/**Declare background instance.*/
 	protected Background background;
 	
-	/**Initiate ??*/
+	/**Initialization for subtype behavior.*/
 	public abstract void init(); 
 	
-	/** update background*/
+	/** Update background.*/
 	public abstract void update();
 	
-	/**Draw background image and text*/
+	/**
+	 * Draw background image and text.
+	 * @param gc		Image of the scene.
+	 */
 	public abstract void render(GraphicsContext gc);
 	
-	/**Handle keyboard pressed event*/
+	/**
+	 * Handle keyboard pressed event according to subtype behavior.
+	 * @param keyCode		keyboard code
+	 */
 	public abstract void keyPressed(KeyCode keyCode);
 	
-	/**Handle keyboard released event*/
+	/**
+	 * Handle keyboard released event according to subtype behavior.
+	 * @param keyCode		keyboard code
+	 */
 	public abstract void keyReleased(KeyCode keyCode);
 }
