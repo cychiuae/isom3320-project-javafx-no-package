@@ -1,25 +1,41 @@
-
-
 import java.util.ArrayList;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 
+/**
+ * Class Bullet is to store the status and behavior of a bullet in the game. 
+ * @author kevingok
+ *
+ */
 public abstract class Bullet extends GameObject {
+	/**Define the status of a bullet flying as 0.*/
 	protected final int FLYING = 0;
+	/**Define the status of a bullet hitting the other object as 1.*/
 	protected final int HITING = 1;
 
+	/**Declare an array list to store the image of sprites.*/
 	protected ArrayList<ArrayList<Image>> sprites;
+	/**Declare an indicator on whether the bullet hit an object.*/
 	protected boolean isHit;
+	/**Declare an indicator on whether the bullet should be removed.*/
 	protected boolean shouldBeRemoved;
+	/**Declare the damage of a bullet.*/
 	protected int damage;
-
+	
+	/**
+	 * Class constructor to create a bullet on the map.
+	 * @param map		Map instance of level
+	 */
 	public Bullet(Map map) {
 		super(map);
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Handle bullet hit event
+	 */
 	public void isHit() {
 		if(!isHit) {
 			dx = 0;
@@ -29,14 +45,25 @@ public abstract class Bullet extends GameObject {
 		}
 	}
 	
+	/**
+	 * Retrieve the damage of a bullet.
+	 * @return		Damage of a bullet.
+	 */
 	public int getDamage() {
 		return damage;
 	}
 	
+	/**
+	 * Retrieve condition whether a bullet should be removed.
+	 * @return		True/False on condition whether a bullet should be removed.
+	 */
 	public boolean shoudBeRemove() {
 		return shouldBeRemoved;
 	}
 
+	/**
+	 * Update bullet animation and mark bullet to be removed.
+	 */
 	@Override
 	public void update() {
 		int currentRow = (int) (yPosition / tileSize);
@@ -76,6 +103,9 @@ public abstract class Bullet extends GameObject {
 		}
 	}
 
+	/**
+	 * Draw the bullet whether facing right or left.
+	 */
 	@Override
 	public void render(GraphicsContext gc) {
 		// TODO Auto-generated method stub
@@ -87,12 +117,14 @@ public abstract class Bullet extends GameObject {
 		}
 	}
 	
+	/*No intention to use.*/
 	@Override
 	public void keyPressed(KeyCode keyCode) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/*No intention to use.*/
 	@Override
 	public void keyReleased(KeyCode keyCode) {
 		// TODO Auto-generated method stub
