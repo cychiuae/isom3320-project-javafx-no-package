@@ -51,7 +51,7 @@ public class Player extends Character {
 		dx = 1.6;
 		facingRight = true;
 
-		hp = maxHp = 10;
+		hp = maxHp = 20;
 
 		balls = new ArrayList<FireBall>();
 		numOfFire = maxFire = 5;

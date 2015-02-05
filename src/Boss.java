@@ -56,7 +56,7 @@ public class Boss extends Enemy {
 		dx = 0.7;
 		facingRight = right = true;
 
-		hp = maxHp = 1;
+		hp = maxHp = 20;
 		firing = jumping = false;
 		damage = 5;
 
