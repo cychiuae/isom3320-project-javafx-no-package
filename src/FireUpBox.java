@@ -16,6 +16,8 @@ public class FireUpBox extends GameObject {
 	/**
 	 * Class constructor initiates width and height of the fire ball and set default
 	 * of not used up.
+	 * @param map				Map of the level
+	 * @param numOfFireBall		Number of Fire Ball stored
 	 */
 	public FireUpBox(Map map, int numOfFireBall) {
 		super(map);
