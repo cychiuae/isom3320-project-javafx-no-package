@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
@@ -13,8 +16,6 @@ import javafx.scene.text.FontWeight;
  *
  */
 public class WinScene extends Scene {
-	/**Declare background instance*/
-	private Background background;
 	/**Declare Color of wordings*/
 	private Color color;
 	/**Declare Font of wordings*/
@@ -22,7 +23,9 @@ public class WinScene extends Scene {
 
 	/**Declare MediaPlayer*/
 	private MediaPlayer mediaPlayer;
-
+	/**Declares Animation.*/
+	private Animation animation;
+	
 	/**Declare score*/
 	private int score;
 
@@ -30,12 +33,20 @@ public class WinScene extends Scene {
 	 * final score description*/ 
 	public WinScene() {
 		// TODO Auto-generated constructor stub
-		background = new Background("winscene.gif", 1);
-		background.setVector(0, 0);
 
-		color = Color.YELLOW;
-		font = Font.font("Lucida Console", FontWeight.BOLD, 12);
+		color = Color.RED;
+		font = Font.font("Lucida Console", FontWeight.BOLD, 15);
 		mediaPlayer = new MediaPlayer(MultimediaHelper.getMusicByName("win.mp3"));
+		
+		Image spritesheet = MultimediaHelper.getImageByName("bigwin.png");
+		ArrayList<Image> frames = new ArrayList<Image>();
+		for(int i = 0; i < 25; i++) {
+			frames.add(MultimediaHelper.getSubImage(spritesheet, (int)(i * 600), 0, (int)600, (int)368));
+		}
+
+		animation = new Animation();
+		animation.setFrames(frames);
+		animation.setDelay(130);
 	}
 
 	/**Get latest score after player win the game.*/
@@ -51,7 +62,7 @@ public class WinScene extends Scene {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		background.update();
+		animation.update();
 		mediaPlayer.play();
 	}
 
@@ -61,12 +72,12 @@ public class WinScene extends Scene {
 	@Override
 	public void render(GraphicsContext gc) {
 		// TODO Auto-generated method stub
-		background.render(gc);
+		gc.drawImage(animation.getImage(), 20, 94);
 
 		gc.setFill(color);
 		gc.setFont(font);
-		gc.fillText("Your score is " + score, 6, 360);
-		gc.fillText("You seems lucky. Isn't?", 6, 370);
+		gc.fillText("YOU WIN!! CONGRATULATIONs!!", 40, 40);
+		gc.fillText("And your score is " + score, 40, 60);
 	}
 
 	/**
