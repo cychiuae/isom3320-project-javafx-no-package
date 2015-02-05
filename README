@@ -1,0 +1,8 @@
+How to Compile
+
+1. Unzip the file first.
+2. Open Command Line.
+3. Set the current directory to the unziped folder.
+4. Set the PATH for jdk. (Here we use jdk1.8)
+5. To compile, type:  javac src\*.java
+6. To run, type:  java -cp src Game
