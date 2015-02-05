@@ -36,7 +36,7 @@ public class Mushroom extends Enemy {
 		// TODO Auto-generated method stub
 		if(left || right) {
 			facingRight = right;
-			dx = right ? 3 : -3;
+			dx = right ? 1.5 : -1.5;
 		}
 
 		if(falling) {

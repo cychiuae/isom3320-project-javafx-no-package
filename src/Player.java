@@ -54,7 +54,7 @@ public class Player extends Character {
 		hp = maxHp = 20;
 
 		balls = new ArrayList<FireBall>();
-		numOfFire = maxFire = 5;
+		numOfFire = maxFire = 10;
 
 		attackDamage = 5;
 		attackRange = 80;
