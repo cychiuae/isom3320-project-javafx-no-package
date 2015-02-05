@@ -1,9 +1,19 @@
-
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
 
+/**
+ * Class FireBomb manages the fire ball ejected from the player.
+ * @author kevingok
+ *
+ */
 public class FireBall extends Bullet {
+	/**
+	 * Class constructor declare all detail information(width, height, collision width, collision height, 
+	 * damage value, direction, image, animation of the fire ball.
+	 * @param map			Map of the level.
+	 * @param right			Determines direction of fire ball. 
+	 */
 	public FireBall(Map map, boolean right) {
 		super(map);
 		// TODO Auto-generated constructor stub
