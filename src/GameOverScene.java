@@ -91,6 +91,8 @@ public class GameOverScene extends Scene {
 		case ENTER:
 			SceneManager.getInstance().changeSceneLevel(SceneManager.MENU);
 			break;
+		default:
+			;
 		}
 	}
 
