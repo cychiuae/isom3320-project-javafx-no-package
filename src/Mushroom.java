@@ -1,15 +1,25 @@
-
-
 import java.util.ArrayList;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 
+/**
+ * Class Mushroom defines properties and regulates behaviors of fast 
+ * moving mushroom enemy.
+ * @author kevingok
+ *
+ */
 public class Mushroom extends Enemy {
 	
+	/**Declare font type for illustrating HP of mushroom*/
 	private Font font;
 
+	/**
+	 * Class constructor initializes width, height, damage, image, animation for a mushroom 
+	 * with a map instance to reveal specified location on the map.
+	 * @param map		Map instance of the level.
+	 */
 	public Mushroom(Map map) {
 		super(map);
 		font = Font.font("Arial", 18);
@@ -31,6 +41,10 @@ public class Mushroom extends Enemy {
 		animation.setDelay(40);
 	}
 
+	/**
+	 * Update action of enemy mushroom. Method will handle subsequent action if mushroom is facing right or left, 
+	 * being hit and touching block tiles.
+	 */
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
@@ -120,6 +134,10 @@ public class Mushroom extends Enemy {
 		animation.update();
 	}
 
+	/**
+	 * Draw mushroom of rightside and leftside, as well as retrieve life after being hit.
+	 * @param gc		Image of mushroom
+	 */
 	private void drawBody(GraphicsContext gc) {
 		if(isHit) {
 			if((System.nanoTime() - hitTimer) / 100000000 % 2 == 0) {
@@ -134,6 +152,9 @@ public class Mushroom extends Enemy {
 		}
 	}
 	
+	/**
+	 * Trigger drawBody method and draw HP display below mushroom image 
+	 */
 	@Override
 	public void render(GraphicsContext gc) {
 		// TODO Auto-generated method stub
@@ -142,18 +163,27 @@ public class Mushroom extends Enemy {
 		gc.fillText(hp + "/" + maxHp, xPosition + map.getX() - 20, yPosition - 20);
 	}
 
+	/**
+	 * No intention to use
+	 */
 	@Override
 	public void startFiring() {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * No intention to use
+	 */
 	@Override
 	public void startJumping() {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * No intention to use
+	 */
 	@Override
 	public void checkHit(Player player) {
 		// TODO Auto-generated method stub

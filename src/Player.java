@@ -9,36 +9,69 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+ * Class Player defines all properties and all regulates behaviors of user-control player
+ * character.
+ * @author kevingok
+ *
+ */
 public class Player extends Character {
+	
+	/**Define idle states of player*/
 	private static final int IDLE = 0;
+	/**Define walking states of player*/
 	private static final int WALKING = 1;
+	/**Define jumping states of player*/
 	private static final int JUMPING = 2;
+	/**Define falling states of player*/
 	private static final int FALLING = 3;
+	/**Define flying states of player*/
 	private static final int FLYING = 4;
+	/**Define firing states of player*/
 	private static final int FIRING = 5;
+	/**Define attacking(short-range) states of player*/
 	private static final int ATTACKING = 6;
 
+	/**Define sound effect of player jumped*/
 	private static Media JUMPINGSOUND = MultimediaHelper.getMusicByName("jump.wav");
+	/**Define sound effect of player gotten coin*/
 	private static Media COINSOUND = MultimediaHelper.getMusicByName("coin.wav");
+	/**Define sound effect of player being bombed*/
 	private static Media BOMBSOUND = MultimediaHelper.getMusicByName("bomb.wav");
+	/**Define sound effect of player fired*/
 	private static Media FIRESOUND = MultimediaHelper.getMusicByName("fire.wav");
+	/**Define sound effect of player being hit*/
 	private static Media HITSOUND = MultimediaHelper.getMusicByName("mario_ooh.wav");
 
+	/**Declare array for storing fire ball instance*/
 	private ArrayList<FireBall> balls;
+	/**Declare number of fire ball instance*/
 	private int numOfFire;
+	/**Declare maximum number of fire ball*/
 	private int maxFire;
+	/**Declare action of firing*/
 	private boolean firing;
-
+	/**Declare action of short-range attacking*/
 	private boolean attack;
+	/**Declare damage of an attack*/
 	private int attackDamage;
+	/**Declare range of an attack*/
 	private int attackRange;
 
+	/**Declare action of flying*/
 	private boolean flying;
 
+	/**Declare array for storing sprites instance*/
 	private ArrayList<ArrayList<Image>> sprites;
 
+	/**Declare font type for illustrating HP, fireball amount*/
 	private Font font;
 	
+	/**
+	 * Class constructor initializes width, height, hp, fireball amount, attack damage, 
+	 * image, animation with a map instance to reveal specified location on the map.
+	 * @param map		Map instance of the level.
+	 */
 	public Player(Map map) {
 		super(map);
 		// TODO Auto-generated constructor stub
@@ -83,6 +116,11 @@ public class Player extends Character {
 		animation.setDelay(400);
 	}
 
+	/**
+	 * Check whether fireball intersect with enemy instance and trigger enemy's hp deduction
+	 * and produce corresponding sound effect.
+	 * @param e			Enemy instance for checking whether enemy is being hit.
+	 */
 	public void checkHit(Enemy e) {
 		for(int i = 0; i < balls.size(); i++) {
 			Bullet fb = balls.get(i);
@@ -109,6 +147,11 @@ public class Player extends Character {
 		}
 	}
 
+	/**
+	 * Collision detection with any enemy.
+	 * @param o		Enemy instance
+	 * @return		True/False if collision detected.
+	 */
 	public boolean intersects(Enemy o) {
 		if(xPosition + 20 < o.getXPosition() + o.getCollisionWidth() &&
 				xPosition + collisionWidth > o.getXPosition() &&
@@ -120,6 +163,9 @@ public class Player extends Character {
 		return false;
 	}
 	
+	/**
+	 * Deduction of hp if player is hit.
+	 */
 	@Override
 	public void hit(int damage) {
 		if(isDead || isHit) {
@@ -139,6 +185,11 @@ public class Player extends Character {
 		hitTimer = System.nanoTime();
 	}
 
+	/**
+	 * Handle coin detection and play sound effect.  
+	 * @param c		Coin instance
+	 * @return		True/False if coin collides.
+	 */
 	public boolean gotCoin(Coin c) {
 		if(xPosition + 20 < c.getXPosition() + c.getCollisionWidth() &&
 				xPosition + collisionWidth > c.getXPosition() &&
@@ -152,6 +203,10 @@ public class Player extends Character {
 		return false;
 	}
 
+	/**
+	 * Check whether player eaten by people eating flower.
+	 * @param f		Flwoer instance.
+	 */
 	public void checkAteByFlower(EatPeopleFlower f) {
 		// TODO Auto-generated method stub
 		if(xPosition + 20 < f.getXPosition() + f.getCollisionWidth() &&
@@ -164,6 +219,10 @@ public class Player extends Character {
 		}
 	}
 
+	/**
+	 * Update action of player. Method will handle subsequent action if player is facing right or left, 
+	 * being hit and touching block tiles.
+	 */
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
@@ -306,6 +365,9 @@ public class Player extends Character {
 		animation.update();
 	}
 
+	/**
+	 * Update special action of player like firing, flying and attack.
+	 */
 	private void updateAction() {
 		if(firing) {
 			if(currentAction != FIRING) {
@@ -376,6 +438,10 @@ public class Player extends Character {
 		}
 	}
 
+	/**
+	 * Draw player on the game display regarding it is being hit and facing right or left.
+	 * @param gc
+	 */
 	private void drawPlayer(GraphicsContext gc) {
 		if(isHit) {
 			if((System.nanoTime() - hitTimer) / 100000000 % 2 == 0) {
@@ -391,6 +457,9 @@ public class Player extends Character {
 		}
 	}
 
+	/**
+	 * Draw FireBall and HP text display.
+	 */
 	@Override
 	public void render(GraphicsContext gc) {
 		// TODO Auto-generated method stub
@@ -406,6 +475,9 @@ public class Player extends Character {
 		gc.fillText("HP: " + hp + "/" + maxHp, 10, 50);
 	}
 
+	/**
+	 * Handle keyboard pressed event.
+	 */
 	@Override
 	public void keyPressed(KeyCode keyCode) {
 		// TODO Auto-generated method stub
@@ -431,6 +503,9 @@ public class Player extends Character {
 		}
 	}
 
+	/**
+	 * Handle keyboard released event.
+	 */
 	@Override
 	public void keyReleased(KeyCode keyCode) {
 		// TODO Auto-generated method stub
