@@ -63,6 +63,7 @@ public class Coin extends GameObject {
 	
 	/**
 	 * Retrieve width of collision size.
+	 * @return  Width of collision size
 	 */
 	public double getCollisionWidth() {
 		return collisionWidth;
@@ -70,6 +71,7 @@ public class Coin extends GameObject {
 
 	/**
 	 * Retrieve height of collision size.
+	 * @return  Hegiht of collision size
 	 */
 	public double getCollisionHegiht() {
 		return collisionHegiht;
